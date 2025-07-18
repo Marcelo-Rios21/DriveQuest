@@ -1,6 +1,8 @@
 package modelos;
 
-public class VehiculoPasajeros extends Vehiculo {
+import interfaces.Factura;
+
+public class VehiculoPasajeros extends Vehiculo implements Factura {
     private int maxPasajeros;
 
     public VehiculoPasajeros() {
@@ -30,5 +32,31 @@ public class VehiculoPasajeros extends Vehiculo {
                 "Dias de arriendo: " + getArriendo() + "\n" +
                 "Capacidad maxima de pasajeros: " + getMaxPasajeros();
     }
-    
+
+    @Override
+    public String calcularBoleta() {
+        double subtotal = getArriendo() * VALOR_DIARIO;
+        double iva = subtotal * IVA;
+        double descuento = subtotal * DESCUENTO_PASAJEROS;
+        double total = subtotal + iva - descuento;
+
+        if (getArriendo() <= 0) {
+            return "El numero de dias de arriendo debe ser mayor que cero.";
+        }
+
+        return String.format("""
+            BOLETA - Vehículo de Pasajeros
+            Patente: %s
+            Dias de arriendo: %d
+            ---------------------------
+            Subtotal: $%.2f
+            IVA: $%.2f
+            Descuento: -$%.2f
+            ---------------------------
+            Total a pagar: $%.2f
+            """,
+            getPatente(), getArriendo(),
+            subtotal, iva, descuento, total
+        );
+    } 
 }

@@ -1,6 +1,8 @@
 package modelos;
 
-public class VehiculoCarga extends Vehiculo {
+import interfaces.Factura;
+
+public class VehiculoCarga extends Vehiculo implements Factura {
     private double capacidadCarga;
 
     public VehiculoCarga() {
@@ -33,4 +35,30 @@ public class VehiculoCarga extends Vehiculo {
                 "Capacidad de carga: " + getCapacidadCarga();
     }
 
+    @Override
+    public String calcularBoleta() {
+        double subtotal = getArriendo() * VALOR_DIARIO;
+        double iva = subtotal * IVA;
+        double descuento = subtotal * DESCUENTO_CARGA;
+        double total = subtotal + iva - descuento;
+
+        if (getArriendo() <= 0) {
+            return "El numero de dias de arriendo debe ser mayor que cero.";
+        }
+
+        return String.format("""
+            BOLETA - Vehículo de Carga
+            Patente: %s
+            Dias de arriendo: %d
+            ---------------------------
+            Subtotal: $%.2f
+            IVA: $%.2f
+            Descuento: -$%.2f
+            ---------------------------
+            Total a pagar: $%.2f
+            """,
+            getPatente(), getArriendo(),
+            subtotal, iva, descuento, total
+        );
+    }
 }
