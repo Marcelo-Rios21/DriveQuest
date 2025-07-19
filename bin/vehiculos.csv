@@ -1,0 +1,8 @@
+Carga;ABCD12;Volvo;FH;2018;10;15000
+Pasajeros;LMN345;Chevrolet;Express;2022;8;12
+Carga;XYZ789;Subaru;Impreza;2017;cinco;20000
+Carga;DUP123;Ford;F-150;2019;6;3000
+Carga;DUP123;Ford;F-250;2020;7;4000
+Pasajeros;BADFORMAT
+Carga;INVNEG;Iveco;Daily;2021;-3;5000
+Helicoptero;H001;Bell;206;2020;5;2
