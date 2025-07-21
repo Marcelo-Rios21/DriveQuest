@@ -30,7 +30,8 @@ public class VehiculoPasajeros extends Vehiculo implements Factura {
                 "Modelo: " + getModelo() + "\n" +
                 "Año: " + getAnio() + "\n" +
                 "Dias de arriendo: " + getArriendo() + "\n" +
-                "Capacidad maxima de pasajeros: " + getMaxPasajeros();
+                "Capacidad maxima de pasajeros: " + getMaxPasajeros()+
+                "\n--------------------------------";
     }
 
     @Override
@@ -59,4 +60,12 @@ public class VehiculoPasajeros extends Vehiculo implements Factura {
             subtotal, iva, descuento, total
         );
     } 
+
+    @Override
+    public String toString() {
+        return mostrarDatos();
+    }
+
+    
+
 }

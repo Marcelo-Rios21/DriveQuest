@@ -1,6 +1,8 @@
 package modelos;
 
-public abstract class Vehiculo {
+import interfaces.Factura;
+
+public abstract class Vehiculo implements Factura{
     private String patente;
     private String marca;
     private String modelo;
@@ -63,4 +65,6 @@ public abstract class Vehiculo {
 
     public abstract String mostrarDatos();
 
+    @Override
+    public abstract String calcularBoleta();
 }

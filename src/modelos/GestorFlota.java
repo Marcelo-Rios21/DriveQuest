@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class GestorFlota {
     private Map<String, Vehiculo> mapaPatentes;
 
     public GestorFlota() {
-        this.vehiculos = new ArrayList<>();
+        this.vehiculos = Collections.synchronizedList(new ArrayList<>());
         this.mapaPatentes = new HashMap<>();
     }
 

@@ -32,7 +32,8 @@ public class VehiculoCarga extends Vehiculo implements Factura {
                 "Modelo: " + getModelo() + "\n" +
                 "Año: " + getAnio() + "\n" +
                 "Dias de arriendo: " + getArriendo() + "\n" +
-                "Capacidad de carga: " + getCapacidadCarga();
+                "Capacidad de carga: " + getCapacidadCarga()+
+                "\n--------------------------------";
     }
 
     @Override
@@ -61,4 +62,10 @@ public class VehiculoCarga extends Vehiculo implements Factura {
             subtotal, iva, descuento, total
         );
     }
+
+    @Override
+    public String toString() {
+        return mostrarDatos();
+    }
+
 }
